@@ -1,6 +1,7 @@
 # DynamicClass
+# Code for PHP
 # you can create your class by array;
-# patch stdClass can not continue dynamic function
+# patch stdClass can not contain dynamic functions.
 
 #example 
 
@@ -18,4 +19,5 @@ $cls = Request::map(
 	},
 	'sex'=>'Famale',
 	'id'=>'100'
-]);;
+]);
+
