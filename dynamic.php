@@ -30,6 +30,15 @@ abstract class abstractDynamicClass
 		$this->methods[$n] = Closure::bind($m,$this);
 	}
 	
+	public function addGate($n,$m,$p)
+	{
+		$this->methods[$n] =  Closure::bind(function ()
+                			use($m,$p)
+        				{
+               					return call_user_func_array($m,$p);
+        				},null);
+	}
+	
 	public static function map(array $array)
 	{
 		$clsName = get_called_class();
@@ -47,6 +56,7 @@ abstract class abstractDynamicClass
 		return $obj;
 	}
 }
+
 
 class Request extends abstractDynamicClass
 {
@@ -74,3 +84,13 @@ $cls = Request::map(
 echo $cls -> getId()."\n";
 $cls->send();
 $cls->echo();
+
+$cls->addGate('f',function ($a,$b,$c)
+{
+	echo $a."-".$b."-".$c;
+},array($cls->getId(),2,3));
+
+
+$cls->f();
+
+
