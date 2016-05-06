@@ -1,6 +1,6 @@
-#Dynamic class
+# DynamicClass
 # you can create your class by array;
-# to patch stdClass can not continue dynamic function
+# patch stdClass can not continue dynamic function
 
 #example 
 
